@@ -78,7 +78,8 @@ export function HomeScreen() {
               <div className="card-body stack">
                 <BucketSplit counts={o.shops.byBucket} />
                 <dl className="kv">
-                  <dt>{t('home.onPilot')}</dt><dd className="num">{formatCount(o.shops.byBucket.pilot)} <span className="muted">· {t('home.endingSoon', { n: o.lists.endingSoon.total })}</span></dd>
+                  <dt>{t('home.onTrial')}</dt><dd className="num">{formatCount(o.shops.byBucket.trial)}</dd>
+                  <dt>{t('home.onPilot')}</dt><dd className="num">{formatCount(o.shops.byBucket.pilot)}</dd>
                   <dt>{t('home.paid')}</dt><dd className="num">{formatCount(o.shops.byBucket.paid)}</dd>
                   <dt>{t('home.notStartedLabel')}</dt><dd className="num">{formatCount(o.shops.byBucket.not_started)}</dd>
                 </dl>

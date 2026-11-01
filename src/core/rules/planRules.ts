@@ -3,22 +3,24 @@
 // The server decides the group (reja adminActivityRules.js); this only says how to show it.
 // Pure: imports nothing, so tests/portalRulesCheck.mjs can run it with plain Node.
 
-export type BucketKey = 'pilot' | 'paid' | 'grace' | 'pilot_ended' | 'overdue' | 'not_started' | 'suspended';
-export type Tone = 'success' | 'accent' | 'warning' | 'danger' | 'muted';
+export type BucketKey = 'trial' | 'pilot' | 'paid' | 'grace' | 'pilot_ended' | 'overdue' | 'not_started' | 'suspended';
+export type Tone = 'success' | 'accent' | 'info' | 'warning' | 'danger' | 'muted';
 
-export const BUCKET_ORDER: BucketKey[] = ['pilot', 'paid', 'grace', 'pilot_ended', 'overdue', 'not_started', 'suspended'];
+export const BUCKET_ORDER: BucketKey[] = ['trial', 'pilot', 'paid', 'grace', 'pilot_ended', 'overdue', 'not_started', 'suspended'];
 
 const LABELS: Record<BucketKey, string> = {
-  pilot: 'On pilot',
+  trial: 'Free trial', // the automatic 14 days every new shop gets
+  pilot: 'Pilot', // free time you gave from this portal
   paid: 'Paid',
   grace: 'Grace days',
-  pilot_ended: 'Pilot ended',
+  pilot_ended: 'Free time ended', // a trial or a pilot that ran out unpaid
   overdue: 'Overdue',
   not_started: 'Not started',
   suspended: 'Suspended',
 };
 
 const TONES: Record<BucketKey, Tone> = {
+  trial: 'info',
   pilot: 'accent',
   paid: 'success',
   grace: 'warning',
@@ -55,7 +57,7 @@ export function planEndText(expiresAt: string | null, bucket: string, formatDate
 // A plan-history row in one line: what happened
 export function describeChange(c: { source: string; newStatus: string; oldStatus: string | null; note: string | null }): string {
   if (c.source === 'manual') return 'Payment recorded';
-  if (c.source === 'trial') return c.note && c.note.startsWith('pilot until') ? 'Pilot set' : 'Free month started';
+  if (c.source === 'trial') return c.note && c.note.startsWith('pilot until') ? 'Pilot set' : 'Free trial started';
   if (c.source === 'admin') return c.newStatus === 'suspended' ? 'Suspended' : 'Suspension lifted';
   if (c.source === 'system') return c.newStatus === 'expired' ? 'Plan ran out' : 'Changed by the system';
   return `Changed (${c.source})`;

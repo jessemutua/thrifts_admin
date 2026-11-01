@@ -1,7 +1,7 @@
 // src/core/types/adminTypes.ts
 // The shapes the API sends back (reja src/routes/admin.js). The only place they are described.
 
-export type Bucket = 'pilot' | 'paid' | 'grace' | 'pilot_ended' | 'overdue' | 'not_started' | 'suspended';
+export type Bucket = 'trial' | 'pilot' | 'paid' | 'grace' | 'pilot_ended' | 'overdue' | 'not_started' | 'suspended';
 
 export type OwnerContact = { id: string; name: string | null; email: string | null };
 

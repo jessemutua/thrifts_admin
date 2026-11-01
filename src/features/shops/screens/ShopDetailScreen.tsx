@@ -78,7 +78,7 @@ export function ShopDetailScreen() {
             {!s.deleted ? (
               <div className="row wrap">
                 {!isBranch && !suspended ? <button className="btn primary" onClick={() => setOpen('paid')}>{t('paid.title')}</button> : null}
-                {!isBranch && !suspended ? <button className="btn" onClick={() => setOpen('pilot')}>{s.onPilot ? t('pilot.change') : t('pilot.title')}</button> : null}
+                {!isBranch && !suspended ? <button className="btn" onClick={() => setOpen('pilot')}>{s.bucket === 'pilot' ? t('pilot.change') : t('pilot.title')}</button> : null}
                 <button className={`btn${suspended ? '' : ' danger'}`} onClick={() => setOpen('suspend')}>{suspended ? t('suspend.liftTitle') : t('suspend.title')}</button>
               </div>
             ) : null}
