@@ -155,6 +155,7 @@ const TEXT = {
   'source.pinterest': 'Pinterest',
   'source.qr': 'QR sticker',
   'source.store': 'Inside the store page',
+  'source.thrifts': 'Thrifts search',
   'source.other': 'Other sites',
   'source.direct': 'Direct link',
   'source.unknown': 'Unknown',
