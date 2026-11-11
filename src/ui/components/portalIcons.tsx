@@ -18,3 +18,4 @@ export const SunIcon = (p: P) => (<svg {...base} {...p}><circle cx="12" cy="12" 
 export const BackIcon = (p: P) => (<svg {...base} {...p}><path d="M15 5 8 12l7 7" /></svg>);
 export const RefreshIcon = (p: P) => (<svg {...base} {...p}><path d="M20 11a8 8 0 1 0-2.3 5.7" /><path d="M20 4v7h-7" /></svg>);
 export const TrashIcon = (p: P) => (<svg {...base} {...p}><path d="M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3" /></svg>);
+export const GridIcon = (p: P) => (<svg {...base} {...p}><rect x="4" y="4" width="7" height="7" rx="1.5" /><rect x="13" y="4" width="7" height="7" rx="1.5" /><rect x="4" y="13" width="7" height="7" rx="1.5" /><rect x="13" y="13" width="7" height="7" rx="1.5" /></svg>);

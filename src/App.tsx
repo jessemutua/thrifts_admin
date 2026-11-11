@@ -15,6 +15,8 @@ import { FeedbackScreen } from './features/feedback/screens/FeedbackScreen';
 import { MetricsScreen } from './features/metrics/screens/MetricsScreen';
 import { OnlineStoresScreen } from './features/online/screens/OnlineStoresScreen';
 import { AppSettingsScreen } from './features/appSettings/screens/AppSettingsScreen';
+import { VerticalListScreen } from './features/verticals/screens/VerticalListScreen';
+import { VerticalEditorScreen } from './features/verticals/screens/VerticalEditorScreen';
 
 function Gate() {
   const { state } = useSession();
@@ -30,6 +32,8 @@ function Gate() {
         <Route path="shops/:shopId" element={<ShopDetailScreen />} />
         <Route path="people" element={<PeopleScreen />} />
         <Route path="feedback" element={<FeedbackScreen />} />
+        <Route path="verticals" element={<VerticalListScreen />} />
+        <Route path="verticals/:key" element={<VerticalEditorScreen />} />
         <Route path="app" element={<AppSettingsScreen />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Route>

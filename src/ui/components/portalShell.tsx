@@ -8,7 +8,7 @@ import { t } from '../../text/portalText';
 import { useSession } from '../../features/session/hooks/useSession';
 import { useThemeChoice } from '../../features/session/hooks/useThemeChoice';
 import { PirpleSignature } from './pirpleSignature';
-import { ChartIcon, ChatIcon, GlobeIcon, HomeIcon, MenuIcon, MoonIcon, PeopleIcon, PhoneIcon, ShopIcon, SunIcon } from './portalIcons';
+import { ChartIcon, ChatIcon, GlobeIcon, GridIcon, HomeIcon, MenuIcon, MoonIcon, PeopleIcon, PhoneIcon, ShopIcon, SunIcon } from './portalIcons';
 
 const NAV = [
   { to: '/', label: t('nav.home'), Icon: HomeIcon, end: true },
@@ -17,6 +17,7 @@ const NAV = [
   { to: '/shops', label: t('nav.shops'), Icon: ShopIcon, end: false },
   { to: '/people', label: t('nav.people'), Icon: PeopleIcon, end: false },
   { to: '/feedback', label: t('nav.feedback'), Icon: ChatIcon, end: false },
+  { to: '/verticals', label: t('nav.verticals'), Icon: GridIcon, end: false },
   { to: '/app', label: t('nav.app'), Icon: PhoneIcon, end: false },
 ];
 

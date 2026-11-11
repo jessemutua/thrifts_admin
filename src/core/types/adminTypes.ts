@@ -145,3 +145,35 @@ export type OnlineStores = {
 
 export type AppVersions = { minVersion: string; latestVersion: string; downloadUrl: string };
 export type AppSettings = { versions: AppVersions; from: 'portal' | 'code'; updatedAt: string | null; updatedBy: string | null };
+
+// ---- verticals (business types) ----
+export type VerticalField = {
+  key: string;
+  label: string;
+  type: string; // text | select | isbn
+  options?: { value: string; label: string }[];
+  maxLength?: number;
+  hint?: string;
+  suggestions?: string[];
+  more?: boolean;
+  hidden?: boolean;
+};
+export type VerticalType = { key: string; label: string; fields: string[]; sizeSuggestions?: string[]; legacy?: string[] };
+export type VerticalSettings = {
+  variants: { enabled: boolean };
+  cardFields: string[];
+  feed: { apparel: boolean; category: string; gtinField: string; brandFields: string[] };
+  icon: string;
+};
+export type AdminVertical = {
+  key: string;
+  label: string;
+  builtIn: boolean;
+  showAtSignup: boolean;
+  shopCount: number;
+  registrationFields: VerticalField[];
+  productTypes: VerticalType[];
+  productAttributes: VerticalField[];
+  settings: VerticalSettings;
+};
+export type VerticalTemplate = Omit<AdminVertical, 'builtIn' | 'shopCount'>;

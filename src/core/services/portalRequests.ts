@@ -2,7 +2,8 @@
 // One function per API route the portal uses, with the shape it returns. Screens never build addresses themselves.
 import { adminCall, sessionCall } from './portalApi';
 import type {
-  AppSettings, AppVersions, FeedbackPage, Metrics, OnlineStores, Overview, Person, PlanChange, ShopDetail, ShopListPage, ShopNote,
+  AdminVertical, AppSettings, AppVersions, FeedbackPage, Metrics, OnlineStores, Overview, Person, PlanChange, ShopDetail, ShopListPage, ShopNote,
+  VerticalTemplate,
 } from '../types/adminTypes';
 
 const enc = encodeURIComponent;
@@ -55,3 +56,13 @@ export const getPeople = (q: string) => adminCall<{ people: Person[]; error?: st
 export const getFeedback = (days: number) => adminCall<FeedbackPage>('GET', `/admin/feedback?days=${days}`);
 export const getAppSettings = () => adminCall<AppSettings>('GET', '/admin/app-settings');
 export const saveAppSettings = (v: AppVersions) => adminCall<AppSettings>('PUT', '/admin/app-settings', v);
+
+// ---- verticals (business types) ----
+export const getVerticals = () => adminCall<{ verticals: AdminVertical[] }>('GET', '/admin/verticals');
+export const getVertical = (key: string) => adminCall<{ vertical: AdminVertical }>('GET', `/admin/verticals/${enc(key)}`);
+export const getVerticalTemplates = () => adminCall<{ templates: { key: string; label: string }[] }>('GET', '/admin/vertical-templates');
+export const getVerticalTemplate = (key: string) => adminCall<{ template: VerticalTemplate }>('GET', `/admin/vertical-templates/${enc(key)}`);
+export const createVerticalRequest = (body: unknown) => adminCall<{ vertical: AdminVertical }>('POST', '/admin/verticals', body);
+export const updateVerticalRequest = (key: string, body: unknown) => adminCall<{ vertical: AdminVertical }>('PUT', `/admin/verticals/${enc(key)}`, body);
+export const setShopVerticalRequest = (shopId: string, vertical: string) =>
+  adminCall<{ vertical: string; shopsChanged: number }>('POST', `/admin/shops/${enc(shopId)}/vertical`, { vertical });

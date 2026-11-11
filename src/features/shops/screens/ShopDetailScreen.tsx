@@ -14,6 +14,7 @@ import { useShopDetail } from '../hooks/useShopDetail';
 import { useTestShopToggle } from '../hooks/useShopActions';
 import { DeleteShopDialog, PaidDialog, PilotDialog, SuspendDialog } from './ShopActionDialogs';
 import { HistoryPanel, NotesPanel, ShopFeedbackPanel } from './ShopSidePanels';
+import { ShopVerticalPanel } from './ShopVerticalPanel';
 
 type Open = null | 'pilot' | 'paid' | 'suspend' | 'delete';
 
@@ -136,6 +137,8 @@ export function ShopDetailScreen() {
               </div>
             </section>
           ) : null}
+
+          {!s.deleted ? <ShopVerticalPanel shopId={s.id} current={s.vertical} isBranch={isBranch} onDone={(m) => { toast(m); afterChange(); }} /> : null}
 
           {!s.deleted && !isBranch ? (
             <section className="card card-pad stack-s">
